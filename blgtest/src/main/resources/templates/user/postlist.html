@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of your Posts</title>
+
+    <div th:replace="fragments/header :: header-css" />
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header" />
+
+<div class="container">
+
+    <div id="wrapper">
+        <h1 class="text-center text-dark">Your posts</h1>
+
+        <a class="nav-link btn-outline-light text-dark" th:href="@{/profile/posts/newpost}">New post</a>
+
+        <table id="keywords" cellspacing="0" cellpadding="0" class="table table-striped">
+            <thead>
+            <tr>
+                <th><span>Date</span></th>
+                <th><span>User</span></th>
+                <th><span>Title</span></th>
+                <th><span>Visible All</span></th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post : ${posts}">
+                <td class="lalign" th:text="${#dates.format(post.date, 'yyyy-MM-dd')}"></td>
+                <td th:text="${post.user.username}"></td>
+                <td th:text="${post.title}"></td>
+                <td><input class="disabled" th:type="checkbox" th:checked="${post.visibleAll}"/></td>
+                <td>
+                    <a class="text-dark" th:href="@{/profile/posts/{id}(id=${post.id})}">edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer" />
+
+</body>
+</html>

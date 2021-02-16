@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+    <div th:replace="fragments/header :: header-css" />
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header" />
+
+<div class="container">
+
+    <div id="wrapper">
+        <div class="flex-row">
+            <h1 class="text-center text-dark"
+                th:text="${post.title}"
+            >Title</h1>
+        </div>
+
+        <div class="flex-row">
+            <p class="text-left text-info"
+               th:text="${post.date}"
+            ></p>
+        </div>
+
+        <div class="flex-row border-bottom">
+            <h3 class="text-left text-dark" id="text"
+                th:text="${post.text}"></h3>
+        </div>
+
+        <span sec:authorize="isAnonymous()">Only authorised user can leave comments</span>
+        <form sec:authorize="isAuthenticated()" method="post" th:action="@{/profile/posts/newcomment}">
+            <div><span class="text-left text-dark" id="comments"> Leave your Comment here: </span></div>
+            <div class="form-group" >
+                <input type="hidden" th:value="${post.id}" th:name="postid"/>
+                <input type="submit" value="Apply" class="btn btn-outline-dark" />
+            </div>
+            <div><textarea th:name="textcomment"></textarea></div>
+        </form>
+
+        <div class="flex-row">
+            <span class="text-dark">Comments:</span>
+            <div class="form-group" th:each="com : ${comments}">
+                <label class="text-info" sec:authorize="isAuthenticated()" for="TextareaComment" th:text="${com.user.username}"></label>
+                <div th:text="${com.text}" class="form-control border" id="TextareaComment" ></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer" />
+
+</body>
+</html>

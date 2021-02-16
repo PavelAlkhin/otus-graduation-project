@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Blog</title>
+    <!-- this is header-css -->
+
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header" />
+
+<div class="container">
+
+    <div id="wrapper">
+
+        <a th:href="@{/{page}(page=${prevPage})}">Prev page</a>
+        <a th:href="@{/{page}(page=${nextPage})}">Next page</a>
+
+        <div class="flex btn-outline-light" th:each="post : ${posts}">
+
+            <div class="border-bottom">
+                <p class="text-left text-info" th:text="${#dates.format(post.date, 'yyyy-MM-dd')}">post date</p>
+                <p class="text-left text-info" th:text="${post.user.username}">User</p>
+                <a class="nav-link" th:href="@{/posts/{id}(id=${post.id})}">
+                    <h1 class="text-dark text-left" th:text="${post.title}">post title</h1>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

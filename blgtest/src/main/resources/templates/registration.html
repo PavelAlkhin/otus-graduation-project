@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="row">
+        <h1 class="text-center text-dark">Registration</h1>
+    </div>
+
+    <form th:action="@{/registration/confirm}" method="post">
+        <div class="row">
+
+            <p class="text-danger" th:text="${error}"></p>
+
+            <div class="col-md-8">
+                <input type="hidden" th:value="${token}" th:name="token"/>
+
+                <div class="form-group">
+                    <label for="username" class="control-label">Username</label>
+                    <input type="text" class="form-control" th:name="username" id="username"/>
+
+                    <span class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="control-label">email</label>
+                    <input type="email" class="form-control" th:name="email" id="email"/>
+
+                    <span class="text-danger"></span>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="password" class="control-label">Password</label>
+                    <input type="password" class="form-control" th:name="password" id="password"/>
+
+                    <span class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="control-label">Name</label>
+                    <input type="text" class="form-control" th:name="name" id="name"/>
+
+                    <span class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname" class="control-label">Last Name</label>
+                    <input type="text" class="form-control" th:name="lastname" id="lastname"/>
+
+                    <span class="text-danger"></span>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+
+                <div>
+                    <input class="checkbox" type="checkbox" id="using2FA" checked
+                           th:name="using2FA"
+                           th:value="true"
+                    />
+                    <label for="using2FA">Use Two step verification</label>
+                </div>
+
+                <label for="tokenotp">Token OTP</label>
+                <input class="text-danger" type="text" id="tokenotp" name="tokenotp"
+                       th:name="tokenotp"
+                       th:value="${tokenotp}"
+                />
+
+                <img id="qrcode" src="">
+
+
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-dark"/>
+            </div>
+        </div>
+
+    </form>
+
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+    });
+
+</script>
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

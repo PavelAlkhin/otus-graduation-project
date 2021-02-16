@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Confirm Registration</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<!--d-flex justify-content-lg-center-->
+
+<div class="container justify-content-center">
+    <div class="row">
+
+        <h2 for="secret"> Enter OTP Token:</h2>
+        <h2 th:text="${secret}" id="secret" class="text-danger"></h2>
+<!--        <a href="/login" class="btn btn-outline-dark"> Sing in </a>-->
+
+    </div>
+    <div class="row">
+        <div id="qr">
+            <img th:src="${qr}" id="qrcode"/>
+            <lebel for="qrcode">
+                <h2>
+                    or Scan this Barcode using Google Authenticator app on your phone
+                    to use it later in login
+                </h2>
+            </lebel>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<div th:fragment="footer" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+	<div class="container">
+		<footer>
+			<!-- FOOTER -->
+			© 2021 <span sec:authorize="isAuthenticated()">|
+				Logged user: <span>[[${#httpServletRequest.remoteUser}]]</span> |
+				Roles: <span sec:authentication="principal.authorities"></span> |
+				<a class="navbar navbar-brand text-dark" th:href="@{/logout}">Sign Out</a>
+			</span>
+
+		</footer>
+	</div>
+
+	<script type="text/javascript">
+		function showMenu(){
+			var el = document.getElementById("navbarNavAltMarkup");
+
+			if(el.classList.contains("show")){
+				el.classList = "collapse navbar-collapse";
+			}else{
+				el.classList = ('collapse navbar-collapse show');
+			}
+		}
+	</script>
+</div>

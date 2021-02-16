@@ -1,0 +1,326 @@
+2021-02-16 08:03:34.917  INFO 13608 --- [reactor-http-nio-11] d.c.b.a.server.services.StatusUpdater    : Couldn't retrieve status for Instance(id=a1c6d0c1b2bf, version=0, registration=Registration(name=blgtest, managementUrl=http://EC-0042-APV:8080/actuator, healthUrl=http://192.168.0.11:8080/actuator/health, serviceUrl=http://EC-0042-APV:8080/, source=http-api), registered=true, statusInfo=StatusInfo(status=UNKNOWN, details={}), statusTimestamp=2021-02-16T06:03:34.862516600Z, info=Info(values={}), endpoints=Endpoints(endpoints={health=Endpoint(id=health, url=http://192.168.0.11:8080/actuator/health)}), buildVersion=null, tags=Tags(values={}))
+
+io.netty.channel.AbstractChannel$AnnotatedNoRouteToHostException: No route to host: no further information: /192.168.0.11:8080
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	|_ checkpoint ⇢ Request to GET health [DefaultWebClient]
+Stack trace:
+Caused by: java.net.NoRouteToHostException: No route to host: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779) ~[na:na]
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:330) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:702) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-02-16 08:03:35.233  WARN 13608 --- [parallel-1] d.c.b.a.server.services.IntervalCheck    : Unexpected error in status-check
+
+reactor.core.Exceptions$OverflowException: Could not emit tick 1352 due to lack of requests (interval doesn't support small downstream requests that replenish slower than the ticks)
+	at reactor.core.Exceptions.failWithOverflow(Exceptions.java:234) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+	at reactor.core.publisher.FluxInterval$IntervalRunnable.run(FluxInterval.java:130) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+	at reactor.core.scheduler.PeriodicWorkerTask.call(PeriodicWorkerTask.java:59) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+	at reactor.core.scheduler.PeriodicWorkerTask.run(PeriodicWorkerTask.java:73) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-02-16 08:03:35.236  INFO 13608 --- [reactor-http-nio-1] d.c.b.a.server.services.StatusUpdater    : Couldn't retrieve status for Instance(id=34fecff80a31, version=8, registration=Registration(name=blgtest, managementUrl=http://host.docker.internal:8080/actuator, healthUrl=http://host.docker.internal:8080/actuator/health, serviceUrl=http://host.docker.internal:8080/, source=http-api), registered=true, statusInfo=StatusInfo(status=UP, details={db={status=UP, details={database=H2, validationQuery=isValid()}}, diskSpace={status=UP, details={total=510208765952, free=47470309376, threshold=10485760, exists=true}}, ping={status=UP}}), statusTimestamp=2021-02-15T16:33:10.945641300Z, info=Info(values={}), endpoints=Endpoints(endpoints={caches=Endpoint(id=caches, url=http://host.docker.internal:8080/actuator/caches), loggers=Endpoint(id=loggers, url=http://host.docker.internal:8080/actuator/loggers), logfile=Endpoint(id=logfile, url=http://host.docker.internal:8080/actuator/logfile), health=Endpoint(id=health, url=http://host.docker.internal:8080/actuator/health), env=Endpoint(id=env, url=http://host.docker.internal:8080/actuator/env), heapdump=Endpoint(id=heapdump, url=http://host.docker.internal:8080/actuator/heapdump), scheduledtasks=Endpoint(id=scheduledtasks, url=http://host.docker.internal:8080/actuator/scheduledtasks), mappings=Endpoint(id=mappings, url=http://host.docker.internal:8080/actuator/mappings), beans=Endpoint(id=beans, url=http://host.docker.internal:8080/actuator/beans), configprops=Endpoint(id=configprops, url=http://host.docker.internal:8080/actuator/configprops), threaddump=Endpoint(id=threaddump, url=http://host.docker.internal:8080/actuator/threaddump), metrics=Endpoint(id=metrics, url=http://host.docker.internal:8080/actuator/metrics), conditions=Endpoint(id=conditions, url=http://host.docker.internal:8080/actuator/conditions), info=Endpoint(id=info, url=http://host.docker.internal:8080/actuator/info)}), buildVersion=null, tags=Tags(values={}))
+
+java.net.UnknownHostException: Запрошенное имя верно, но данные запрошенного типа не найдены (host.docker.internal)
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:na]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	|_ checkpoint ⇢ Request to GET health [DefaultWebClient]
+Stack trace:
+		at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:na]
+		at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:929) ~[na:na]
+		at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1515) ~[na:na]
+		at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848) ~[na:na]
+		at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1505) ~[na:na]
+		at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1364) ~[na:na]
+		at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1298) ~[na:na]
+		at java.base/java.net.InetAddress.getByName(InetAddress.java:1248) ~[na:na]
+		at io.netty.util.internal.SocketUtils$8.run(SocketUtils.java:156) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.internal.SocketUtils$8.run(SocketUtils.java:153) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at java.base/java.security.AccessController.doPrivileged(Native Method) ~[na:na]
+		at io.netty.util.internal.SocketUtils.addressByName(SocketUtils.java:153) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.resolver.DefaultNameResolver.doResolve(DefaultNameResolver.java:41) ~[netty-resolver-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.resolver.SimpleNameResolver.resolve(SimpleNameResolver.java:61) ~[netty-resolver-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.resolver.SimpleNameResolver.resolve(SimpleNameResolver.java:53) ~[netty-resolver-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.resolver.InetSocketAddressResolver.doResolve(InetSocketAddressResolver.java:55) ~[netty-resolver-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.resolver.InetSocketAddressResolver.doResolve(InetSocketAddressResolver.java:31) ~[netty-resolver-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.resolver.AbstractAddressResolver.resolve(AbstractAddressResolver.java:106) ~[netty-resolver-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.bootstrap.Bootstrap.doResolveAndConnect0(Bootstrap.java:206) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.bootstrap.Bootstrap.access$000(Bootstrap.java:46) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.bootstrap.Bootstrap$1.operationComplete(Bootstrap.java:180) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.bootstrap.Bootstrap$1.operationComplete(Bootstrap.java:166) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:577) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:551) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:490) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:615) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.DefaultPromise.setSuccess0(DefaultPromise.java:604) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.DefaultPromise.trySuccess(DefaultPromise.java:104) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.DefaultChannelPromise.trySuccess(DefaultChannelPromise.java:84) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.AbstractChannel$AbstractUnsafe.safeSetSuccess(AbstractChannel.java:989) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:504) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:417) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:474) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-02-16 08:03:36.373  WARN 13608 --- [parallel-2] d.c.b.a.server.services.IntervalCheck    : Unexpected error in info-check
+
+reactor.core.Exceptions$OverflowException: Could not emit tick 248 due to lack of requests (interval doesn't support small downstream requests that replenish slower than the ticks)
+	at reactor.core.Exceptions.failWithOverflow(Exceptions.java:234) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+	at reactor.core.publisher.FluxInterval$IntervalRunnable.run(FluxInterval.java:130) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+	at reactor.core.scheduler.PeriodicWorkerTask.call(PeriodicWorkerTask.java:59) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+	at reactor.core.scheduler.PeriodicWorkerTask.run(PeriodicWorkerTask.java:73) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-02-16 08:03:36.373  WARN 13608 --- [reactor-http-nio-3] d.c.b.admin.server.services.InfoUpdater  : Couldn't retrieve info for Instance(id=34fecff80a31, version=8, registration=Registration(name=blgtest, managementUrl=http://host.docker.internal:8080/actuator, healthUrl=http://host.docker.internal:8080/actuator/health, serviceUrl=http://host.docker.internal:8080/, source=http-api), registered=true, statusInfo=StatusInfo(status=UP, details={db={status=UP, details={database=H2, validationQuery=isValid()}}, diskSpace={status=UP, details={total=510208765952, free=47470309376, threshold=10485760, exists=true}}, ping={status=UP}}), statusTimestamp=2021-02-15T16:33:10.945641300Z, info=Info(values={}), endpoints=Endpoints(endpoints={caches=Endpoint(id=caches, url=http://host.docker.internal:8080/actuator/caches), loggers=Endpoint(id=loggers, url=http://host.docker.internal:8080/actuator/loggers), logfile=Endpoint(id=logfile, url=http://host.docker.internal:8080/actuator/logfile), health=Endpoint(id=health, url=http://host.docker.internal:8080/actuator/health), env=Endpoint(id=env, url=http://host.docker.internal:8080/actuator/env), heapdump=Endpoint(id=heapdump, url=http://host.docker.internal:8080/actuator/heapdump), scheduledtasks=Endpoint(id=scheduledtasks, url=http://host.docker.internal:8080/actuator/scheduledtasks), mappings=Endpoint(id=mappings, url=http://host.docker.internal:8080/actuator/mappings), beans=Endpoint(id=beans, url=http://host.docker.internal:8080/actuator/beans), configprops=Endpoint(id=configprops, url=http://host.docker.internal:8080/actuator/configprops), threaddump=Endpoint(id=threaddump, url=http://host.docker.internal:8080/actuator/threaddump), metrics=Endpoint(id=metrics, url=http://host.docker.internal:8080/actuator/metrics), conditions=Endpoint(id=conditions, url=http://host.docker.internal:8080/actuator/conditions), info=Endpoint(id=info, url=http://host.docker.internal:8080/actuator/info)}), buildVersion=null, tags=Tags(values={}))
+
+java.net.UnknownHostException: host.docker.internal
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:797) ~[na:na]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	|_ checkpoint ⇢ Request to GET info [DefaultWebClient]
+Stack trace:
+		at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:797) ~[na:na]
+		at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1505) ~[na:na]
+		at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1364) ~[na:na]
+		at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1298) ~[na:na]
+		at java.base/java.net.InetAddress.getByName(InetAddress.java:1248) ~[na:na]
+		at io.netty.util.internal.SocketUtils$8.run(SocketUtils.java:156) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.internal.SocketUtils$8.run(SocketUtils.java:153) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at java.base/java.security.AccessController.doPrivileged(Native Method) ~[na:na]
+		at io.netty.util.internal.SocketUtils.addressByName(SocketUtils.java:153) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.resolver.DefaultNameResolver.doResolve(DefaultNameResolver.java:41) ~[netty-resolver-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.resolver.SimpleNameResolver.resolve(SimpleNameResolver.java:61) ~[netty-resolver-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.resolver.SimpleNameResolver.resolve(SimpleNameResolver.java:53) ~[netty-resolver-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.resolver.InetSocketAddressResolver.doResolve(InetSocketAddressResolver.java:55) ~[netty-resolver-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.resolver.InetSocketAddressResolver.doResolve(InetSocketAddressResolver.java:31) ~[netty-resolver-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.resolver.AbstractAddressResolver.resolve(AbstractAddressResolver.java:106) ~[netty-resolver-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.bootstrap.Bootstrap.doResolveAndConnect0(Bootstrap.java:206) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.bootstrap.Bootstrap.access$000(Bootstrap.java:46) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.bootstrap.Bootstrap$1.operationComplete(Bootstrap.java:180) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.bootstrap.Bootstrap$1.operationComplete(Bootstrap.java:166) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:577) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:551) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:490) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:615) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.DefaultPromise.setSuccess0(DefaultPromise.java:604) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.DefaultPromise.trySuccess(DefaultPromise.java:104) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.DefaultChannelPromise.trySuccess(DefaultChannelPromise.java:84) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.AbstractChannel$AbstractUnsafe.safeSetSuccess(AbstractChannel.java:989) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:504) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:417) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:474) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-02-16 08:03:46.869  WARN 13608 --- [reactor-http-nio-5] r.netty.http.client.HttpClientConnect    : [id: 0xf87b6ef0, L:/172.22.208.1:10023 - R:EC-0042-APV/172.22.208.1:8080] The connection observed an error
+
+java.io.IOException: Удаленный хост принудительно разорвал существующее подключение
+	at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1133) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-02-16 08:03:46.869  WARN 13608 --- [reactor-http-nio-4] r.netty.http.client.HttpClientConnect    : [id: 0x5d80f773, L:/172.22.208.1:10022 - R:EC-0042-APV/172.22.208.1:8080] The connection observed an error
+
+java.io.IOException: Удаленный хост принудительно разорвал существующее подключение
+	at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1133) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-02-16 08:03:46.870  WARN 13608 --- [reactor-http-nio-6] r.netty.http.client.HttpClientConnect    : [id: 0x8d7a61cc, L:/172.22.208.1:10024 - R:EC-0042-APV/172.22.208.1:8080] The connection observed an error
+
+java.io.IOException: Удаленный хост принудительно разорвал существующее подключение
+	at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1133) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-02-16 08:03:46.869  WARN 13608 --- [reactor-http-nio-9] r.netty.http.client.HttpClientConnect    : [id: 0xa7461f64, L:/172.22.208.1:10027 - R:EC-0042-APV/172.22.208.1:8080] The connection observed an error
+
+java.io.IOException: Удаленный хост принудительно разорвал существующее подключение
+	at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1133) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-02-16 08:03:46.869  WARN 13608 --- [reactor-http-nio-7] r.netty.http.client.HttpClientConnect    : [id: 0x16daffc6, L:/172.22.208.1:10025 - R:EC-0042-APV/172.22.208.1:8080] The connection observed an error
+
+java.io.IOException: Удаленный хост принудительно разорвал существующее подключение
+	at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1133) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-02-16 08:03:46.870  WARN 13608 --- [reactor-http-nio-8] r.netty.http.client.HttpClientConnect    : [id: 0x826be5d2, L:/172.22.208.1:10026 - R:EC-0042-APV/172.22.208.1:8080] The connection observed an error
+
+java.io.IOException: Удаленный хост принудительно разорвал существующее подключение
+	at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1133) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.buffer.WrappedByteBuf.writeBytes(WrappedByteBuf.java:821) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-02-16 08:03:46.875  INFO 13608 --- [reactor-http-nio-7] d.c.b.a.server.services.StatusUpdater    : Couldn't retrieve status for Instance(id=2add337e2c41, version=12, registration=Registration(name=blgtest, managementUrl=http://EC-0042-APV:8080/actuator, healthUrl=http://EC-0042-APV:8080/actuator/health, serviceUrl=http://EC-0042-APV:8080/, source=http-api), registered=true, statusInfo=StatusInfo(status=UP, details={db={status=UP, details={database=H2, validationQuery=isValid()}}, diskSpace={status=UP, details={total=510208765952, free=47468040192, threshold=10485760, exists=true}}, ping={status=UP}}), statusTimestamp=2021-02-15T16:31:09.436483400Z, info=Info(values={}), endpoints=Endpoints(endpoints={caches=Endpoint(id=caches, url=http://EC-0042-APV:8080/actuator/caches), loggers=Endpoint(id=loggers, url=http://EC-0042-APV:8080/actuator/loggers), logfile=Endpoint(id=logfile, url=http://EC-0042-APV:8080/actuator/logfile), health=Endpoint(id=health, url=http://EC-0042-APV:8080/actuator/health), env=Endpoint(id=env, url=http://EC-0042-APV:8080/actuator/env), heapdump=Endpoint(id=heapdump, url=http://EC-0042-APV:8080/actuator/heapdump), scheduledtasks=Endpoint(id=scheduledtasks, url=http://EC-0042-APV:8080/actuator/scheduledtasks), mappings=Endpoint(id=mappings, url=http://EC-0042-APV:8080/actuator/mappings), beans=Endpoint(id=beans, url=http://EC-0042-APV:8080/actuator/beans), configprops=Endpoint(id=configprops, url=http://EC-0042-APV:8080/actuator/configprops), threaddump=Endpoint(id=threaddump, url=http://EC-0042-APV:8080/actuator/threaddump), metrics=Endpoint(id=metrics, url=http://EC-0042-APV:8080/actuator/metrics), conditions=Endpoint(id=conditions, url=http://EC-0042-APV:8080/actuator/conditions), info=Endpoint(id=info, url=http://EC-0042-APV:8080/actuator/info)}), buildVersion=null, tags=Tags(values={}))
+
+java.io.IOException: Удаленный хост принудительно разорвал существующее подключение
+	at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method) ~[na:na]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	|_ checkpoint ⇢ Request to GET health [DefaultWebClient]
+Stack trace:
+		at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method) ~[na:na]
+		at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43) ~[na:na]
+		at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276) ~[na:na]
+		at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233) ~[na:na]
+		at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223) ~[na:na]
+		at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358) ~[na:na]
+		at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1133) ~[netty-buffer-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+		at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-02-16 08:03:55.274  INFO 13608 --- [parallel-5] d.c.b.a.server.services.StatusUpdater    : Couldn't retrieve status for Instance(id=34fecff80a31, version=8, registration=Registration(name=blgtest, managementUrl=http://host.docker.internal:8080/actuator, healthUrl=http://host.docker.internal:8080/actuator/health, serviceUrl=http://host.docker.internal:8080/, source=http-api), registered=true, statusInfo=StatusInfo(status=UP, details={db={status=UP, details={database=H2, validationQuery=isValid()}}, diskSpace={status=UP, details={total=510208765952, free=47470309376, threshold=10485760, exists=true}}, ping={status=UP}}), statusTimestamp=2021-02-15T16:33:10.945641300Z, info=Info(values={}), endpoints=Endpoints(endpoints={caches=Endpoint(id=caches, url=http://host.docker.internal:8080/actuator/caches), loggers=Endpoint(id=loggers, url=http://host.docker.internal:8080/actuator/loggers), logfile=Endpoint(id=logfile, url=http://host.docker.internal:8080/actuator/logfile), health=Endpoint(id=health, url=http://host.docker.internal:8080/actuator/health), env=Endpoint(id=env, url=http://host.docker.internal:8080/actuator/env), heapdump=Endpoint(id=heapdump, url=http://host.docker.internal:8080/actuator/heapdump), scheduledtasks=Endpoint(id=scheduledtasks, url=http://host.docker.internal:8080/actuator/scheduledtasks), mappings=Endpoint(id=mappings, url=http://host.docker.internal:8080/actuator/mappings), beans=Endpoint(id=beans, url=http://host.docker.internal:8080/actuator/beans), configprops=Endpoint(id=configprops, url=http://host.docker.internal:8080/actuator/configprops), threaddump=Endpoint(id=threaddump, url=http://host.docker.internal:8080/actuator/threaddump), metrics=Endpoint(id=metrics, url=http://host.docker.internal:8080/actuator/metrics), conditions=Endpoint(id=conditions, url=http://host.docker.internal:8080/actuator/conditions), info=Endpoint(id=info, url=http://host.docker.internal:8080/actuator/info)}), buildVersion=null, tags=Tags(values={}))
+
+java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 10000ms in 'map' (and no fallback has been configured)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:288) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	|_ checkpoint ⇢ Request to GET health [DefaultWebClient]
+Stack trace:
+		at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:288) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+		at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.doTimeout(FluxTimeout.java:273) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+		at reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber.onNext(FluxTimeout.java:395) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+		at reactor.core.publisher.StrictSubscriber.onNext(StrictSubscriber.java:89) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onNext(FluxOnErrorResume.java:73) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+		at reactor.core.publisher.MonoDelay$MonoDelayRunnable.run(MonoDelay.java:117) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+		at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+		at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28) ~[reactor-core-3.3.10.RELEASE.jar:3.3.10.RELEASE]
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+		at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+		at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+

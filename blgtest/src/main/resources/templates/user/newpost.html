@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <div th:replace="fragments/header :: header-css" />
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header" />
+
+<div class="container">
+
+    <div id="wrapper">
+        <div class="flex">
+            <h1 class="text-center text-dark">New Post</h1>
+        </div>
+        <div class="flex">
+            <form action="/profile/posts/savenewpost" method="post"
+                  th:action="@{/profile/posts/savenewpost}"
+                  >
+
+                <div class="form-group">
+                    <label for="date" class="control-label">Post Date</label>
+                    <input type="date" class="form-control" id="date"
+                           th:name="date"
+                    />
+
+                    <span class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="title" class="control-label">Title</label>
+                    <input
+                        type="text" class="form-control"
+                        id="title" name="title"
+                    />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="text" class="control-label">Text</label>
+                    <textarea class="form-control" id="text" name="text" rows="10"></textarea>
+                </div>
+
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox" name="visibleAll" checked
+                           th:name="visibleAll"
+                    />
+                    <lebel for="visibleAll"> visible for All </lebel>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-outline-dark" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer" />
+
+</body>
+</html>

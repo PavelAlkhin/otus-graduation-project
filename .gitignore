@@ -1,0 +1,9 @@
+target/
+logs/
+.idea
+*.iws
+*.iml
+*.ipr
+.classpath
+.settings/
+.gz

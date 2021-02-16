@@ -1,0 +1,58 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <div th:fragment="header-css">
+        <!-- this is header-css -->
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="generator" content="Hugo 0.80.0">
+
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+
+        <script th:src="@{/js/bootstrap.js}"></script>
+        <script th:src="@{/js/main.js}"></script>
+        <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+
+    </div>
+</head>
+<body>
+
+<!-- this is header -->
+<div th:fragment="header">
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Blog</a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                    onclick="showMenu();"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-link active" th:href="@{/}">Home<span class="sr-only">(current)</span></a>
+                    <!--                    <a class="nav-link" href="#">About</a>-->
+                    <a sec:authorize="hasRole('ADMIN')" class="nav-link" th:href="@{/admin/}" href="/admin/users/"
+                       th:text="Administration"></a>
+                    <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/registration}" href="/registration"
+                       th:text="Registration">Registration</a>
+                    <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/login}"> Log in </a>
+                    <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/profile}"><span
+                            th:text="${#authentication.name}">User</span>!</a>
+                    <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/profile/posts}">My posts</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+</body>
+</html>

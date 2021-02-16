@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User profile</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header" />
+
+<div class="container">
+
+    <div id="wrapper">
+        <div class="flex">
+            <h1 class="text-center text-dark ">Profile</h1>
+        </div>
+        <div class="flex">
+            <form action="/profile/save"
+                  th:action="@{/profile/save}"
+                  th:object="${user}"
+                  th:method="post"
+            >
+                <input type="hidden"
+                       th:value="*{id}"
+                       th:name="id"
+                       th:field="*{id}"
+                />
+
+                <div class="form-group">
+                    <label for="username" class="control-label">Username</label>
+                    <input type="text" class="form-control" id="username"
+                           th:name="username"
+                           th:value="*{username}"
+                           th:field="*{username}"
+                    />
+
+                    <span class="text-danger"></span>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="email" class="control-label">Email</label>
+                    <input type="email" class="form-control" id="email"
+                           th:name="email"
+                           th:value="*{email}"
+                           th:field="*{email}"
+                    />
+
+                    <span class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="control-label">Name</label>
+                    <input type="text" class="form-control" id="name"
+                           th:name="name"
+                           th:value="*{name}"
+                           th:field="*{name}"
+                    />
+
+                    <span class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname" class="control-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastname"
+                           th:name="lastname"
+                           th:value="*{lastname}"
+                           th:field="*{lastname}"
+                    />
+
+                    <span class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="checkbox">
+                        <input class="checkbox" type="checkbox" name="using2FA"
+                               th:checked="*{using2FA}"
+                               th:name="using2FA"
+                               th:value="*{using2FA}"
+                               th:field="*{using2FA}"
+                        />
+                        <lebel for="using2FA"> Using 2FA</lebel>
+
+                        <input class="text-dark" type="text" name="secret"
+                               th:checked="*{secret}"
+                               th:name="secret"
+                               th:value="*{secret}"
+                               th:field="*{secret}"
+                        />
+                        <lebel for="secret"> TOTP token </lebel>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-outline-dark" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+<!--    <div th:if="${#authentication.principal.using2FA}">-->
+<!--        You are using Two-step authentication-->
+<!--        <a href="#" onclick="disable2FA()">Disable 2FA</a>-->
+<!--    </div>-->
+<!--    <div th:if="${! #authentication.principal.using2FA}">-->
+<!--        You are not using Two-step authentication-->
+<!--        <a href="#" onclick="enable2FA()">Enable 2FA</a>-->
+<!--    </div>-->
+    <br/>
+    <div id="qr" style="display:none;">
+        <p>Scan this Barcode using Google Authenticator app on your phone </p>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        function enable2FA(){
+            set2FA(true);
+        }
+        function disable2FA(){
+            set2FA(false);
+        }
+        function set2FA(use2FA){
+            $.post( "/user/update/2fa", { use2FA: use2FA } , function( data ) {
+                if(use2FA){
+                    $("#qr").append('<img src="'+data.message+'" />').show();
+                }else{
+                    window.location.reload();
+                }
+            });
+        }
+    </script>
+
+</div>
+
+<div th:replace="fragments/footer :: footer" />
+
+</body>
+</html>

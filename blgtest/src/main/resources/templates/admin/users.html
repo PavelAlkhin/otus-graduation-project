@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+
+<div th:replace="fragments/header :: header" />
+
+<div class="container">
+
+    <div id="wrapper">
+
+        <h1 class="text-truncate text-dark">Users</h1>
+
+        <table class="table table-striped" id="keywords" cellspacing="0" cellpadding="0">
+            <thead class="thead-dark">
+            <tr>
+                <th><span>Active</span></th>
+                <th><span>User name</span></th>
+                <th><span>Email</span></th>
+                <th><span>Name</span></th>
+                <th><span>lastname</span></th>
+                <th><span>Roles</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td class="lalign" th:text="${user.active}"><input th:type="checkbox" th:checked="${user.active}"/></td>
+                <td ><a th:href="@{/admin/users/{id}(id=${user.id})}" th:text="${user.username}">Username</a></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.lastname}"></td>
+                <td ><p th:each="role : ${user.roles}" th:text="${role.role} + ' | '"></p></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer" />
+</body>
+</html>

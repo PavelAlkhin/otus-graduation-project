@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Administration</title>
+    <!-- this is header-css -->
+
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header" />
+
+<div class="container">
+
+    <div id="wrapper">
+
+        <div class="flex-row btn-outline-light" >
+            <a class="nav-link" th:href="@{/admin/users}">
+                <h1 class="text-dark text-left" >Users</h1>
+            </a>
+        </div>
+        <div class="flex-row btn-outline-light" >
+            <a class="nav-link" th:href="@{/admin/posts}">
+                <h1 class="text-dark text-left">Posts</h1>
+            </a>
+        </div>
+        <div class="flex-row btn-outline-light" >
+            <a class="nav-link" th:href="@{/h2-console}" >
+                <h2 class="text-dark text-left">h2-console</h2>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>
