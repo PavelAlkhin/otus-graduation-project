@@ -28,9 +28,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyUserDetailsService userDetailsService;
 
-//    @Autowired
-//    private AccessDeniedHandler accessDeniedHandler;
-
     @Autowired
     private CustomWebAuthenticationDetailsSource authenticationDetailsSource;
 
@@ -47,12 +44,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return authProvider;
     }
 
-//    @Autowired
-//    public void configureGlobalSecurity(AuthenticationManagerBuilder authentication) throws Exception {
-//        authentication.userDetailsService(userDetailsServiceBean());
-//        authentication.authenticationProvider(authProvider());
-//    }
-
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authProvider());
@@ -65,12 +56,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+    //    @Autowired
+//    private AccessDeniedHandler accessDeniedHandler;
+
+
 //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth
 //                .userDetailsService(userDetailsService)
 //                .passwordEncoder(bCryptPasswordEncoder);
 //    }
+
+//    @Autowired
+//    public void configureGlobalSecurity(AuthenticationManagerBuilder authentication) throws Exception {
+//        authentication.userDetailsService(userDetailsServiceBean());
+//        authentication.authenticationProvider(authProvider());
+//    }
+
 
 
     @Override
